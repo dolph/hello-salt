@@ -1,7 +1,7 @@
-apache2:
+nginx:
   pkg:
     - installed
   service:
     - running
     - require:
-      - pkg: apache2
+      - pkg: nginx

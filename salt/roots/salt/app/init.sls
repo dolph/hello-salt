@@ -1,14 +1,9 @@
-gunicorn:
-  pkg:
-    - installed
-
-python-gevent:
-  pkg:
-    - installed
-
-python-git:
-  pkg:
-    - installed
+app-packages:
+  pkg.installed:
+    - names:
+      - python-git
+      - gunicorn
+      - python-gevent
 
 supervisor:
   pkg:
@@ -17,6 +12,7 @@ supervisor:
     - running
     - require:
       - pkg: supervisor
+      - pkg: app-packages
     - watch:
       - file: supervisord_conf
 
@@ -26,6 +22,8 @@ supervisord_conf:
     - source: salt://app/supervisord.conf
 
 app:
+  require:
+   - pkg: app-packages
   git.latest:
     - name: {{ pillar['git_repo'] }}
     - rev: {{ pillar['git_rev'] }}

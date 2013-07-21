@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
 
   # For masterless, mount your salt file root
   config.vm.synced_folder "salt/roots/salt", "/srv/salt/"
+  config.vm.synced_folder "salt/roots/pillar", "/srv/pillar/"
 
   config.vm.provision :salt do |salt|
     salt.minion_config = "salt/minion"

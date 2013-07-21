@@ -9,8 +9,8 @@ def get_workers():
         return 3
 
 
-#bind = 'unix:/tmp/gunicorn.sock'
-bind = '127.0.0.1:8000'
+bind = 'unix:/tmp/gunicorn.sock'
+#bind = '127.0.0.1:8000'
 
 workers = get_workers()
 worker_class = 'gevent'

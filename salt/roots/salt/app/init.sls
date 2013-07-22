@@ -15,9 +15,9 @@ supervisor:
       - pkg: app-packages
       - git: app-repo
     - watch:
-      - file: supervisord_conf
+      - file: supervisor_conf
 
-supervisord_conf:
+supervisor_conf:
   file.managed:
     - name: /etc/supervisor/conf.d/hello.conf
     - source: salt://app/supervisor.conf

@@ -13,6 +13,7 @@ supervisor:
     - require:
       - pkg: supervisor
       - pkg: app-packages
+      - git: app
     - watch:
       - file: supervisord_conf
 

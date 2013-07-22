@@ -11,4 +11,5 @@ nginx:
 nginxconf:
   file.managed:
     - name: /etc/nginx/nginx.conf
-    - source: salt://http/nginx.conf
+    - source: salt://http/nginx.conf.jinja
+    - template: jinja

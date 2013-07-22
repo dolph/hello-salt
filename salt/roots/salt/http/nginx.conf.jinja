@@ -26,7 +26,7 @@ http {
     # include /etc/nginx/sites-enabled/*;
 
     upstream app_server {
-        server unix:/tmp/gunicorn.sock fail_timeout=0;
+        server {{ pillar['gunicorn_bind'] }} fail_timeout=0;
 
         # For a TCP configuration:
         #server 127.0.0.1:8000 fail_timeout=0;

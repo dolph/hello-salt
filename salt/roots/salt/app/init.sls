@@ -13,7 +13,7 @@ supervisor:
     - require:
       - pkg: supervisor
       - pkg: app-packages
-      - git: app
+      - git: app-repo
     - watch:
       - file: supervisord_conf
 
@@ -22,7 +22,7 @@ supervisord_conf:
     - name: /etc/supervisor/conf.d/hello.conf
     - source: salt://app/supervisor.conf
 
-app:
+app-repo:
   require:
    - pkg: app-packages
   git.latest:

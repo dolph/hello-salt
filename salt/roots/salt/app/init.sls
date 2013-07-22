@@ -19,8 +19,8 @@ supervisor:
 
 supervisord_conf:
   file.managed:
-    - name: /etc/supervisord.conf
-    - source: salt://app/supervisord.conf
+    - name: /etc/supervisor/conf.d/hello.conf
+    - source: salt://app/supervisor.conf
 
 app:
   require:

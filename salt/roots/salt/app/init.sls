@@ -1,7 +1,6 @@
-app-packages:
+app_packages:
   pkg.installed:
     - names:
-      - python-git
       - gunicorn
       - python-gevent
 
@@ -12,8 +11,8 @@ supervisor:
     - running
     - require:
       - pkg: supervisor
-      - pkg: app-packages
-      - git: app-repo
+      - pkg: app_packages
+      - git: git_repo
     - watch:
       - file: supervisor_conf
 
@@ -22,10 +21,13 @@ supervisor_conf:
     - name: /etc/supervisor/conf.d/hello.conf
     - source: salt://app/supervisor.conf
 
-app-repo:
-  require:
-   - pkg: app-packages
+git_repo:
+  pkg.installed:
+    - names:
+      - git
   git.latest:
+    - require:
+      - pkg: git
     - name: {{ pillar['git_repo'] }}
     - rev: {{ pillar['git_rev'] }}
     - target: /var/www/hello/
